@@ -73,6 +73,8 @@ public enum BotState {
         }
     };
 
+    // --------------- //
+
     private static BotState[] states;
     private final boolean inputNeeded;
 
@@ -97,9 +99,9 @@ public enum BotState {
     }
 
     protected void sendMessage(BotContext context, String text) {
-        SendMessage message = new SendMessage()
-                .setChatId(context.getUser().getChatId())
-                .setText(text);
+        SendMessage message = new SendMessage();
+        message.setChatId(Long.toString(context.getUser().getChatId()));
+        message.setText(text);
         try {
             context.getBot().execute(message);
         } catch (TelegramApiException e) {

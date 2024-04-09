@@ -1,31 +1,29 @@
 package ua.kiev.prog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class User {
+public class CustomUser {
     @Id
     @GeneratedValue
     private Long id;
 
     private Long chatId;
-    private Integer stateId;
+    private Integer stateId; // H -> Ph -> Em -> Th
     private String phone;
     private String email;
     private Boolean admin;
     private Boolean notified = false;
 
-    public User() {
+    public CustomUser() {
     }
 
-    public User(Long chatId, Integer state) {
+    public CustomUser(Long chatId, Integer state) {
         this.chatId = chatId;
         this.stateId = state;
     }
 
-    public User(Long chatId, Integer stateId, Boolean admin) {
+    public CustomUser(Long chatId, Integer stateId, Boolean admin) {
         this.chatId = chatId;
         this.stateId = stateId;
         this.admin = admin;
