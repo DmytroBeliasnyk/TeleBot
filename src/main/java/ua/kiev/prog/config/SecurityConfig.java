@@ -30,7 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(login -> login
-                        .loginPage("/pages/login.html").permitAll()
+                        .loginPage("/login.html").permitAll()
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/admin")
                         .failureUrl("/login?error")
