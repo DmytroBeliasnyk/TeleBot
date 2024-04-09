@@ -1,22 +1,22 @@
 package ua.kiev.prog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CustomAdmin {
     @Id
     @GeneratedValue
     private Long id;
-    private final String ROLE = "ADMIN";
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
     private String login;
     private String password;
 
     public CustomAdmin() {
     }
 
-    public CustomAdmin(String login, String password) {
+    public CustomAdmin(UserRole role, String login, String password) {
+        this.role = role;
         this.login = login;
         this.password = password;
     }
@@ -29,8 +29,12 @@ public class CustomAdmin {
         this.id = id;
     }
 
-    public String getROLE() {
-        return ROLE;
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public String getLogin() {

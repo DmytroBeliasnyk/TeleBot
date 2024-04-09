@@ -37,9 +37,8 @@ public class SecurityConfig {
                         .usernameParameter("username")
                         .passwordParameter("password"))
                 .authorizeRequests(authorize -> authorize
-                        .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-                        .antMatchers("/admin").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .antMatchers("/js/login.js").permitAll()
+                        .anyRequest().hasRole("ADMIN")
                 );
 
         return http.build();

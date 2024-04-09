@@ -1,25 +1,23 @@
 $(document).ready(function () {
     $('#login-form').submit(function (e) {
-        e.preventDefault(); // Предотвращаем отправку формы по умолчанию
+        e.preventDefault();
 
         var formData = {
-            username: $('#username').val(), // Получаем значение поля с именем пользователя
-            password: $('#password').val() // Получаем значение поля с паролем
+            username: $('#username').val(),
+            password: $('#password').val()
         };
 
         $.ajax({
             type: 'POST',
-            url: '/login', // URL для обработки аутентификации
+            url: '/login',
             data: formData,
             success: function (response) {
-                // Обработка успешной аутентификации
-                console.log('Успешная аутентификация');
-                window.location.href = '/index'; // Перенаправляем на главную страницу после входа
+                console.log('Success');
+                window.location.href = '/admin';
             },
             error: function (xhr, status, error) {
-                // Обработка ошибок аутентификации
-                console.error('Ошибка аутентификации:', error);
-                $('#errorMessage').text('Ошибка аутентификации, пожалуйста, попробуйте еще раз.');
+                console.error('Invalid login or password:', error);
+                $('#errorMessage').text('Invalid login or password');
             }
         });
     });
