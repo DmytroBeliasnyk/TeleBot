@@ -39,6 +39,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorize -> authorize
                         .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
                         .antMatchers("/admin").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 );
 
         return http.build();
